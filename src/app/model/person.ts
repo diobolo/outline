@@ -3,6 +3,7 @@ export class Person {
   gender: string;
   birthTime: number;
   deathTime: number;
+
   constructor(data) {
     this.name = data.name;
     this.gender = data.gender;

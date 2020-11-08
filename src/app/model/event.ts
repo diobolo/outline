@@ -6,6 +6,7 @@ export class Event {
   impact: string;
   startTime: number;
   endTime: number;
+
   constructor(data) {
     this.name = data.name;
     this.content = data.content;

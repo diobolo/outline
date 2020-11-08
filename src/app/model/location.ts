@@ -2,6 +2,7 @@ export class Location {
   name: string;
   x: number;
   y: number;
+
   constructor(data) {
     this.name = data.name;
     this.x = data.x;

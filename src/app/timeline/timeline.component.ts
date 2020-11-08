@@ -7,7 +7,9 @@ import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/c
 })
 export class TimelineComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('canvas') canvas: any;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     window.addEventListener('resize', this.onResize.bind(this));

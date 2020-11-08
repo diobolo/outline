@@ -1,4 +1,3 @@
-
 declare interface Event {
   name: string;
   content: string;
