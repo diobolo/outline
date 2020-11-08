@@ -1,0 +1,13 @@
+
+header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .nav {
+    display: flex;
+    li {
+      margin: 0 10px;
+    }
+  }
+}

@@ -1,7 +1,9 @@
 
 .container {
   .timeline-canvas {
+    display: block;
     background-color: lightblue;
     width: 100%;
+    height: calc(100vh - 50px);
   }
 }

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { RosterComponent } from './roster/roster.component';
+import { IdbModule } from './core/idb/idb.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RosterComponent } from './roster/roster.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    IdbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
