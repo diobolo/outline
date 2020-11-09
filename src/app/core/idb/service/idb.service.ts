@@ -49,7 +49,8 @@ export class IdbService {
     return new Promise(resolve => {
       const store = this.db.transaction([name], 'readwrite').objectStore(name);
       const request = store.add(row);
-      request.addEventListener('success', () => {
+      request.addEventListener('success', (e) => {
+        console.log(e);
         resolve(true);
       });
       request.addEventListener('error', () => {

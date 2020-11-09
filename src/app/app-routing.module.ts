@@ -3,9 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import {TimelineComponent} from './timeline/timeline.component';
 import {RosterComponent} from './roster/roster.component';
 import {MapComponent} from './map/map.component';
+import { ProjectComponent } from './project/project.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: ProjectComponent
+  }, {
+    path: 'project',
+    component: ProjectComponent
+  }, {
     path: 'timeline',
     component: TimelineComponent
   }, {
