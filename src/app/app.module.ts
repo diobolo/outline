@@ -10,6 +10,8 @@ import { IdbModule } from './core/idb/idb.module';
 import { ClientModule } from './core/client/client.module';
 import { ProjectComponent } from './project/project.component';
 import { PutComponent } from './project/put/put.component';
+import { ProjectModule } from './project/project.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PutComponent } from './project/put/put.component';
     BrowserModule,
     AppRoutingModule,
     IdbModule,
-    ClientModule
+    ClientModule,
+    ProjectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

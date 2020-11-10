@@ -21,7 +21,7 @@ export class IdbService {
         const db = request.result;
         for (const s of stores) {
           if (!db.objectStoreNames.contains(s.name)) {
-            const store = db.createObjectStore(s.name, { keyPath: s.primaryKey });
+            const store = db.createObjectStore(s.name, {keyPath: s.primaryKey});
             for (const i of s.indexes) {
               store.createIndex(i, i);
             }
@@ -29,7 +29,7 @@ export class IdbService {
         }
       });
       request.addEventListener('success', (event) => {
-        console.log('on success', event);
+        // console.log('on success', event);
         this.db = request.result;
         resolve(this.db);
       });
@@ -45,16 +45,16 @@ export class IdbService {
     });
   }
 
-  addRow(name, row): Promise<boolean> {
+  addRow(name, row): Promise<any> {
     return new Promise(resolve => {
       const store = this.db.transaction([name], 'readwrite').objectStore(name);
       const request = store.add(row);
       request.addEventListener('success', (e) => {
         console.log(e);
-        resolve(true);
+        resolve(row);
       });
       request.addEventListener('error', () => {
-        resolve(false);
+        resolve();
       });
     });
   }

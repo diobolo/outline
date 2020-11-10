@@ -1,1 +1,8 @@
-<a routerLink="/project/add">添加</a>
+<a routerLink="/project/put">添加</a>
+
+<div class="list">
+  <div class="item" *ngFor="let p of projectList;">
+    <div class="name">名称: {{p.name}}</div>
+    <div class="intro">简介: {{p.intro}}</div>
+  </div>
+</div>

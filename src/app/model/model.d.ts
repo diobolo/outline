@@ -21,3 +21,8 @@ declare interface Location {
   y: number;
 }
 
+declare interface Project {
+  id: string;
+  name: string;
+  intro: string;
+}

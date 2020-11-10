@@ -7,12 +7,6 @@ import { ProjectComponent } from './project/project.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ProjectComponent
-  }, {
-    path: 'project',
-    component: ProjectComponent
-  }, {
     path: 'timeline',
     component: TimelineComponent
   }, {

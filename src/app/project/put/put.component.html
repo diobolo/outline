@@ -1,1 +1,12 @@
-<p>put works!</p>
+
+<div>
+  <span>名称:</span>
+  <input type="text" [(ngModel)]="name" placeholder="输入项目名称">
+</div>
+<div>
+  <span>简介:</span>
+  <input type="text" [(ngModel)]="intro" placeholder="输入项目简介">
+</div>
+<div class="buttons">
+  <button class="button" (click)="submit()">提交</button>
+</div>
