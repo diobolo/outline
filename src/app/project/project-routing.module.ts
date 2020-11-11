@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {ProjectComponent} from './project.component';
 import {PutComponent} from './put/put.component';
 import {InitGuard} from '../core/guard/init.guard';
+import {DetailComponent} from './detail/detail.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
       }, {
         path: 'put',
         component: PutComponent
+      }, {
+        path: ':id',
+        component: DetailComponent
       }
     ]
   }
@@ -24,4 +28,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProjectRoutingModule { }
+export class ProjectRoutingModule {
+}

@@ -41,4 +41,8 @@ export class ProjectComponent implements OnInit {
   update(p: Project): void {
     this.router.navigate(['project/put'], {queryParams: {id: p.id}});
   }
+
+  check(p: Project): void {
+    this.router.navigate(['project', p.id]);
+  }
 }

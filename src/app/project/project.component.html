@@ -1,10 +1,16 @@
 <a routerLink="/project/put">添加</a>
 
 <div class="list">
+  <div class="item">
+    <div class="name">名称</div>
+    <div class="intro">简介</div>
+    <div class="buttons">操作</div>
+  </div>
   <div class="item" *ngFor="let p of projectList;">
-    <div class="name">名称: {{p.name}}</div>
-    <div class="intro">简介: {{p.intro}}</div>
+    <div class="name">{{p.name}}</div>
+    <div class="intro">{{p.intro}}</div>
     <div class="buttons">
+      <button class="button" (click)="check(p)">查看</button>
       <button class="button" (click)="delete(p)">删除</button>
       <button class="button" (click)="update(p)">修改</button>
     </div>
