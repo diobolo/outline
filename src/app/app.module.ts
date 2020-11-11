@@ -12,6 +12,7 @@ import { ProjectComponent } from './project/project.component';
 import { PutComponent } from './project/put/put.component';
 import { ProjectModule } from './project/project.module';
 import {FormsModule} from '@angular/forms';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms';
     TimelineComponent,
     RosterComponent,
     ProjectComponent,
-    PutComponent
+    PutComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

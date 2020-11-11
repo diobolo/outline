@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ProjectComponent} from './project.component';
 import {PutComponent} from './put/put.component';
+import {InitGuard} from '../core/guard/init.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ProjectComponent
-  }, {
     path: 'project',
+    canActivate: [InitGuard],
     children: [
       {
         path: '',

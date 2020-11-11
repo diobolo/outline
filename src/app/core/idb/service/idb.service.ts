@@ -11,10 +11,9 @@ export class IdbService {
   dbName = 'outline';
 
   constructor() {
-    this.create();
   }
 
-  create(): Promise<IDBDatabase> {
+  create(): Promise<any> {
     return new Promise(resolve => {
       const request = window.indexedDB.open(this.dbName, version);
       request.addEventListener('upgradeneeded', () => {
@@ -31,7 +30,7 @@ export class IdbService {
       request.addEventListener('success', (event) => {
         // console.log('on success', event);
         this.db = request.result;
-        resolve(this.db);
+        resolve(true);
       });
 
       function fail(err): void {
