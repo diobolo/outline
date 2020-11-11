@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {ClientService} from '../core/client/service/client.service';
-import {Project} from '../model/project';
+import {Project} from '../../model/project';
+import {ClientService} from '../../core/client/service/client.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
-export class ProjectComponent implements OnInit {
+export class ListComponent implements OnInit {
+
   projectList: Project[];
 
   constructor(private client: ClientService,
@@ -21,7 +22,7 @@ export class ProjectComponent implements OnInit {
 
   getProjectList(): void {
     this.client.getProjectList().then(res => {
-      if (res && res.length) {
+      if (res) {
         this.projectList = res.map(p => new Project(p));
       }
     });
@@ -31,6 +32,7 @@ export class ProjectComponent implements OnInit {
     const flag = confirm('确定删除该项目吗?');
     if (flag) {
       this.client.deleteProject(p.id).then(res => {
+        console.log('on delete', res);
         if (res) {
           this.getProjectList();
         }
