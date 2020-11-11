@@ -5,21 +5,25 @@ import {ProjectRoutingModule} from './project-routing.module';
 import {DetailComponent} from './detail/detail.component';
 import {PersonModule} from './person/person.module';
 import {PutComponent} from './put/put.component';
-import {ProjectComponent} from './project.component';
 import {FormsModule} from '@angular/forms';
+import {EventModule} from './event/event.module';
+import {LocationModule} from './location/location.module';
+import {ListComponent} from './list/list.component';
 
 
 @NgModule({
   declarations: [
-    ProjectComponent,
     DetailComponent,
-    PutComponent
+    PutComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,
     ProjectRoutingModule,
     FormsModule,
-    PersonModule
+    PersonModule,
+    EventModule,
+    LocationModule
   ]
 })
 export class ProjectModule {
