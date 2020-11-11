@@ -16,4 +16,16 @@ export class ClientService {
   getProjectList(): Promise<any> {
     return this.api.getProjectList();
   }
+
+  deleteProject(id: string): Promise<any> {
+    return this.api.deleteProject(id);
+  }
+
+  getProject(id: string): Promise<any> {
+    return this.api.getProject(id);
+  }
+
+  async updateProject(param: { intro: string; name: string; id: string }): Promise<any> {
+    return this.api.updateProject(param);
+  }
 }

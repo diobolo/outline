@@ -19,4 +19,15 @@ export class ApiService {
     return this.idb.getRows('project');
   }
 
+  deleteProject(id: string): any {
+    return this.idb.deleteRow('project', id);
+  }
+
+  getProject(id: string): Promise<any> {
+    return this.idb.getRow('project', id);
+  }
+
+  updateProject(param: { intro: string; name: string; id: string }): Promise<any> {
+    return this.idb.updateRow('project', param);
+  }
 }
