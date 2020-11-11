@@ -7,6 +7,7 @@ import {RosterComponent} from './person/roster/roster.component';
 import {TimelineComponent} from './event/timeline/timeline.component';
 import {MapComponent} from './location/map/map.component';
 import {ListComponent} from './list/list.component';
+import {ProjectComponent} from './project/project.component';
 
 const routes: Routes = [
   {
@@ -21,9 +22,12 @@ const routes: Routes = [
         component: PutComponent
       }, {
         path: ':id',
-        component: DetailComponent,
+        component: ProjectComponent,
         children: [
           {
+            path: '',
+            component: DetailComponent
+          }, {
             path: 'roster',
             component: RosterComponent
           }, {

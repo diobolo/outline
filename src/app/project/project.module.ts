@@ -9,13 +9,15 @@ import {FormsModule} from '@angular/forms';
 import {EventModule} from './event/event.module';
 import {LocationModule} from './location/location.module';
 import {ListComponent} from './list/list.component';
+import { ProjectComponent } from './project/project.component';
 
 
 @NgModule({
   declarations: [
     DetailComponent,
     PutComponent,
-    ListComponent
+    ListComponent,
+    ProjectComponent
   ],
   imports: [
     CommonModule,
