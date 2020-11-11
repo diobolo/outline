@@ -4,6 +4,7 @@ import {ProjectComponent} from './project.component';
 import {PutComponent} from './put/put.component';
 import {InitGuard} from '../core/guard/init.guard';
 import {DetailComponent} from './detail/detail.component';
+import {RosterComponent} from './person/roster/roster.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,13 @@ const routes: Routes = [
         component: PutComponent
       }, {
         path: ':id',
-        component: DetailComponent
+        component: DetailComponent,
+        children: [
+          {
+            path: 'roster',
+            component: RosterComponent
+          }
+        ]
       }
     ]
   }
