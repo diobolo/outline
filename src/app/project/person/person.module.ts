@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { PersonRoutingModule } from './person-routing.module';
 import { RosterComponent } from './roster/roster.component';
+import { PutComponent } from './put/put.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [RosterComponent],
+  declarations: [RosterComponent, PutComponent],
   imports: [
     CommonModule,
-    PersonRoutingModule
+    PersonRoutingModule,
+    FormsModule
   ]
 })
 export class PersonModule { }

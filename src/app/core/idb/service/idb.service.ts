@@ -107,10 +107,23 @@ export class IdbService {
     });
   }
 
+  indexAll(name: string, index: string, value: string): Promise<any> {
+    return new Promise((resolve) => {
+      const store = this.db.transaction([name], 'readwrite').objectStore(name);
+      const idbIndex = store.index(index);
+      const request = idbIndex.getAll(value);
+      request.addEventListener('success', (event: any) => {
+        resolve(event.target.result);
+      });
+      request.addEventListener('error', () => {
+        resolve();
+      });
+    });
+  }
+
   forEach(name, fn): void {
     this.getRows(name).then(rows => {
       rows.forEach(fn);
     });
   }
-
 }

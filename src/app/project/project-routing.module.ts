@@ -3,9 +3,6 @@ import {Routes, RouterModule} from '@angular/router';
 import {PutComponent} from './put/put.component';
 import {InitGuard} from '../core/guard/init.guard';
 import {DetailComponent} from './detail/detail.component';
-import {RosterComponent} from './person/roster/roster.component';
-import {TimelineComponent} from './event/timeline/timeline.component';
-import {MapComponent} from './location/map/map.component';
 import {ListComponent} from './list/list.component';
 import {ProjectComponent} from './project/project.component';
 
@@ -23,19 +20,20 @@ const routes: Routes = [
       }, {
         path: ':id',
         component: ProjectComponent,
+        data: {name: 'project'},
         children: [
           {
             path: '',
             component: DetailComponent
           }, {
             path: 'roster',
-            component: RosterComponent
+            loadChildren: () => import('./person/person.module').then(m => m.PersonModule)
           }, {
             path: 'timeline',
-            component: TimelineComponent
+            loadChildren: () => import('./event/event.module').then(m => m.EventModule)
           }, {
             path: 'map',
-            component: MapComponent
+            loadChildren: () => import('./location/location.module').then(m => m.LocationModule)
           }
         ]
       }

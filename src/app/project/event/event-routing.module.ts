@@ -1,15 +1,11 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {RosterComponent} from './roster/roster.component';
-import {PutComponent} from './put/put.component';
+import {TimelineComponent} from './timeline/timeline.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: RosterComponent
-  }, {
-    path: 'put',
-    component: PutComponent
+    component: TimelineComponent
   }
 ];
 
@@ -17,5 +13,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PersonRoutingModule {
+export class EventRoutingModule {
 }

@@ -1,0 +1,9 @@
+
+.list {
+  .item {
+    display: flex;
+    .name, .gender, .birth {
+      flex: 1;
+    }
+  }
+}

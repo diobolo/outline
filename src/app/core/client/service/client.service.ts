@@ -28,4 +28,16 @@ export class ClientService {
   async updateProject(param: { intro: string; name: string; id: string }): Promise<any> {
     return this.api.updateProject(param);
   }
+
+  addPerson(params): Promise<any> {
+    return this.api.addPerson(params);
+  }
+
+  getPerson(id: string): Promise<any> {
+    return this.api.getPerson(id);
+  }
+
+  getPersonList(pid: string): Promise<any> {
+    return this.api.getPersonList(pid);
+  }
 }
