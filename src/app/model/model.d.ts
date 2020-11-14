@@ -5,7 +5,7 @@ declare interface Event {
   impact?: string;
   startTime: number;
   endTime?: number;
-  persons?: Person[];
+  personIds?: string[];
 }
 
 declare interface Person {

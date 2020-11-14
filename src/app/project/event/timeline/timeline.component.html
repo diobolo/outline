@@ -1,4 +1,21 @@
 
-<div class="container">
-  查看时间轴
+<div class="buttons">
+  <button class="button" routerLink="./put">添加事件</button>
+</div>
+
+<div class="timeline">
+  <div class="event">
+    <div class="name">名称</div>
+    <div class="content">内容</div>
+    <div class="result">结果</div>
+    <div class="impact">影响</div>
+    <div class="person">人员</div>
+  </div>
+  <div class="event" *ngFor="let e of eventList">
+    <div class="name">{{e.name}}</div>
+    <div class="content">{{e.content}}</div>
+    <div class="result">{{e.result}}</div>
+    <div class="impact">{{e.impact}}</div>
+    <div class="person">{{e.personIds}}</div>
+  </div>
 </div>

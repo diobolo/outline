@@ -1,0 +1,9 @@
+
+.timeline {
+  .event {
+    display: flex;
+    .name, .content, .result, .impact, .person {
+      flex: 1;
+    }
+  }
+}
