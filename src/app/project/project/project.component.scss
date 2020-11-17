@@ -1,6 +1,12 @@
+
+:host {
+  display: block;
+  height: 100vh;
+}
 .nav {
   display: flex;
   justify-content: center;
+  height: 50px;
   .item {
     margin: 0 10px;
   }
