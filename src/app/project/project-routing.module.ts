@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {PutComponent} from './put/put.component';
-import {InitGuard} from '../core/guard/init.guard';
 import {DetailComponent} from './detail/detail.component';
 import {ListComponent} from './list/list.component';
 import {ProjectComponent} from './project/project.component';
@@ -9,7 +8,6 @@ import {ProjectComponent} from './project/project.component';
 const routes: Routes = [
   {
     path: 'project',
-    canActivate: [InitGuard],
     children: [
       {
         path: '',

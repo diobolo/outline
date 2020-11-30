@@ -11,6 +11,23 @@ export class IdbService {
   dbName = 'outline';
 
   constructor() {
+    return new Proxy(this, {
+      get(t, p): any {
+        if (typeof t[p] === 'function' && p !== 'create') {
+          return new Proxy(t[p], {
+            apply(target, ctx, args): any {
+              if (ctx.db) {
+                return Reflect.apply(target, ctx, args);
+              }
+              return ctx.create().then(res => {
+                return Reflect.apply(target, ctx, args);
+              });
+            }
+          });
+        }
+        return t[p];
+      }
+    });
   }
 
   create(): Promise<any> {
@@ -110,6 +127,8 @@ export class IdbService {
   indexAll(name: string, index: string, value: string): Promise<any> {
     return new Promise((resolve) => {
       const store = this.db.transaction([name], 'readwrite').objectStore(name);
+      console.log(name, index, value)
+
       const idbIndex = store.index(index);
       const request = idbIndex.getAll(value);
       request.addEventListener('success', (event: any) => {
