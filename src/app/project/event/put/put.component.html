@@ -1,0 +1,40 @@
+
+<div class="form">
+  <div class="row">
+    <span>名称:</span>
+    <input type="text" [(ngModel)]="name">
+  </div>
+  <div class="row">
+    <span>内容:</span>
+    <input type="text" [(ngModel)]="content">
+  </div>
+  <div class="row">
+    <span>结果:</span>
+    <input type="text" [(ngModel)]="result">
+  </div>
+  <div class="row">
+    <span>影响:</span>
+    <input type="text" [(ngModel)]="impact">
+  </div>
+  <div class="row">
+    <span>人员:</span>
+    <input type="text" [(ngModel)]="personIds">
+  </div>
+</div>
+
+<div class="buttons">
+  <button class="button" (click)="submit()">提交</button>
+</div>
+
+<div class="roster">
+  <div class="person">
+    <div class="name">姓名</div>
+    <div class="gender">性别</div>
+    <div class="id">id</div>
+  </div>
+  <div class="person" *ngFor="let p of personList">
+    <div class="name">{{p.name}}</div>
+    <div class="gender">{{p.gender}}</div>
+    <div class="id">{{p.id}}</div>
+  </div>
+</div>

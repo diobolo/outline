@@ -47,4 +47,15 @@ export class ApiService {
   getPersonList(pid: string): Promise<any> {
     return this.idb.indexAll('person', 'pid', pid);
   }
+
+  addEvent(params: any): Promise<any> {
+    const id = this.util.randomString();
+    console.log('add event', id);
+    params.id = id;
+    return this.idb.addRow('event', params);
+  }
+
+  getEventList(pid: string): Promise<any> {
+    return this.idb.indexAll('event', 'pid', pid);
+  }
 }

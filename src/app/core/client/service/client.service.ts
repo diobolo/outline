@@ -40,4 +40,12 @@ export class ClientService {
   getPersonList(pid: string): Promise<any> {
     return this.api.getPersonList(pid);
   }
+
+  addEvent(param): Promise<any> {
+    return this.api.addEvent(param);
+  }
+
+  getEventList(pid: string): Promise<any> {
+    return this.api.getEventList(pid);
+  }
 }

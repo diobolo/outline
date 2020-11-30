@@ -1,4 +1,8 @@
 
+:host {
+  display: block;
+  min-height: 100vh;
+}
 header {
   height: 50px;
   display: flex;
