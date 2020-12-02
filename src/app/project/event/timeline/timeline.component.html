@@ -1,5 +1,11 @@
 
-<canvas class="timeline" (resize)="onResize()" #canvas></canvas>
+<canvas class="timeline" #canvas
+        (resize)="onResize()"
+        (mousedown)="onMousedown($event)"
+        (mousemove)="onMousemove($event)"
+        (mouseup)="onMouseup($event)"
+        (mousewheel)="onMousewheel($event)">
+</canvas>
 
 <!--<div class="buttons">-->
 <!--  <button class="button" routerLink="./put">添加事件</button>-->
