@@ -42,10 +42,10 @@ export class ClientService {
   }
 
   addEvent(param): Promise<any> {
-    return this.api.addEvent(param);
+    return this.api.addAffair(param);
   }
 
   getEventList(pid: string): Promise<any> {
-    return this.api.getEventList(pid);
+    return this.api.getAffairList(pid);
   }
 }

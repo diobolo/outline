@@ -1,4 +1,4 @@
-export class Event {
+export class Affair {
   name: string;
   content: string;
   persons: Person[] = [];

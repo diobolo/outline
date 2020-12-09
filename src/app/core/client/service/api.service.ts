@@ -48,14 +48,14 @@ export class ApiService {
     return this.idb.indexAll('person', 'pid', pid);
   }
 
-  addEvent(params: any): Promise<any> {
+  addAffair(params: any): Promise<any> {
     const id = this.util.randomString();
-    console.log('add event', id);
+    console.log('add affair', id);
     params.id = id;
-    return this.idb.addRow('event', params);
+    return this.idb.addRow('affair', params);
   }
 
-  getEventList(pid: string): Promise<any> {
-    return this.idb.indexAll('event', 'pid', pid);
+  getAffairList(pid: string): Promise<any> {
+    return this.idb.indexAll('affair', 'pid', pid);
   }
 }

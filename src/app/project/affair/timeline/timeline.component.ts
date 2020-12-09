@@ -10,15 +10,13 @@ import { debounce, debounceTime, throttleTime } from 'rxjs/operators';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit, OnDestroy {
-  @ViewChild('canvas', { static: true }) canvas: ElementRef;
-  ctx: CanvasRenderingContext2D;
+  @ViewChild('view', { static: true }) view: ElementRef;
+  // timeline: HTMLDivElement = document.querySelector('.timeline');
+  canvas = document.createElement('canvas');
+  ctx = this.canvas.getContext('2d');
   eventList: Event[] = [];
-  subject: Subject<any> = new Subject<any>();
+  subject: Subject<any> = new Subject<any>(); // window resize
   pid: string;
-  view = {
-    x: 0,
-    y: 0
-  };
   offset = {
     x: 0,
     y: 0
@@ -33,12 +31,14 @@ export class TimelineComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getEventList(this.pid).then(() => {
       this.resetView();
+      this.draw();
+      this.install();
     });
-    window.addEventListener('resize', this.onResize.bind(this));
-    this.subject.pipe(throttleTime(100)).subscribe(() => {
-      this.resetView();
-    });
-    this.ctx = this.canvas.nativeElement.getContext('2d');
+    // window.addEventListener('resize', this.onResize.bind(this));
+    // this.subject.pipe(throttleTime(100)).subscribe(() => {
+    //   this.resetView();
+    // });
+    // this.ctx = this.canvas.getContext('2d');
   }
 
   ngOnDestroy(): void {
@@ -48,18 +48,21 @@ export class TimelineComponent implements OnInit, OnDestroy {
   }
 
   draw(): void {
-    const width = this.canvas.nativeElement.width;
-    const height = this.canvas.nativeElement.height;
-    this.ctx.fillStyle = 'lightseagreen';
-    this.ctx.fillRect(0, 0, width, height);
+    const width = this.canvas.width;
+    const height = this.canvas.height;
     this.ctx.strokeStyle = 'white';
     this.ctx.lineWidth = 2;
     this.ctx.beginPath();
     this.ctx.moveTo(0, height / 2);
     this.ctx.lineTo(width, height / 2);
     this.ctx.closePath();
-    this.ctx.arc(width / 2 + this.offset.x, height / 2, 5, 0, Math.PI * 2, false);
+    this.ctx.arc(width / 2, height / 2, 5, 0, Math.PI * 2);
     this.ctx.stroke();
+  }
+
+  install(): void {
+    const ctx = this.view.nativeElement.getContext('2d');
+    ctx.drawImage(this.canvas, -(this.canvas.width / 3), -(this.canvas.height / 3));
   }
 
   getEventList(pid): Promise<any> {
@@ -76,31 +79,32 @@ export class TimelineComponent implements OnInit, OnDestroy {
   }
 
   resetView(): void {
-    this.canvas.nativeElement.width = this.canvas.nativeElement.clientWidth;
-    this.canvas.nativeElement.height = this.canvas.nativeElement.clientHeight;
-    this.draw();
+    // console.log(this.timeline);
+    this.canvas.width = this.view.nativeElement.clientWidth * 3;
+    this.canvas.height = this.view.nativeElement.clientHeight * 3;
+    // this.draw();
   }
 
   onMousedown(e: any): void {
-    e.target.offsetX = e.offsetX - this.offset.x;
+    // e.target.offsetX = e.offsetX - this.offset.x;
   }
 
   onMousemove(e): void {
-    if (e.target.offsetX) {
-      this.offset.x = e.offsetX - e.target.offsetX;
-      this.draw();
-    }
+    // if (e.target.offsetX) {
+    //   this.offset.x = e.offsetX - e.target.offsetX;
+    //   this.draw();
+    // }
   }
 
   onMouseup(e: any): void {
-    e.target.offsetX = 0;
+    // e.target.offsetX = 0;
   }
 
   onMousewheel(e): void {
-    if (e.wheelDelta < 0) {
-      this.scale++;
-    } else {
-      this.scale--;
-    }
+    // if (e.wheelDelta < 0) {
+    //   this.scale++;
+    // } else {
+    //   this.scale--;
+    // }
   }
 }

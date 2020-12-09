@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TimelineComponent } from './timeline/timeline.component';
 import { PutComponent } from './put/put.component';
 import {FormsModule} from '@angular/forms';
-import {EventRoutingModule} from './event-routing.module';
+import {AffairRoutingModule} from './affair-routing.module';
 
 
 
@@ -11,8 +11,8 @@ import {EventRoutingModule} from './event-routing.module';
   declarations: [TimelineComponent, PutComponent],
   imports: [
     CommonModule,
-    EventRoutingModule,
+    AffairRoutingModule,
     FormsModule
   ]
 })
-export class EventModule { }
+export class AffairModule { }

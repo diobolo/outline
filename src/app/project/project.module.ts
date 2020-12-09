@@ -6,8 +6,8 @@ import {DetailComponent} from './detail/detail.component';
 import {PersonModule} from './person/person.module';
 import {PutComponent} from './put/put.component';
 import {FormsModule} from '@angular/forms';
-import {EventModule} from './event/event.module';
-import {LocationModule} from './location/location.module';
+import {AffairModule} from './affair/affair.module';
+import {SiteModule} from './site/site.module';
 import {ListComponent} from './list/list.component';
 import { ProjectComponent } from './project/project.component';
 
@@ -24,8 +24,8 @@ import { ProjectComponent } from './project/project.component';
     ProjectRoutingModule,
     FormsModule,
     PersonModule,
-    EventModule,
-    LocationModule
+    AffairModule,
+    SiteModule
   ]
 })
 export class ProjectModule {

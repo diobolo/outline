@@ -1,4 +1,4 @@
-declare interface Event {
+declare interface Affair {
   name: string;
   content: string;
   result: string;
@@ -15,7 +15,7 @@ declare interface Person {
   deathTime?: number;
 }
 
-declare interface Location {
+declare interface Site {
   name: string;
   x: number;
   y: number;

@@ -28,10 +28,10 @@ const routes: Routes = [
             loadChildren: () => import('./person/person.module').then(m => m.PersonModule)
           }, {
             path: 'timeline',
-            loadChildren: () => import('./event/event.module').then(m => m.EventModule)
+            loadChildren: () => import('./affair/affair.module').then(m => m.AffairModule)
           }, {
             path: 'map',
-            loadChildren: () => import('./location/location.module').then(m => m.LocationModule)
+            loadChildren: () => import('./site/site.module').then(m => m.SiteModule)
           }
         ]
       }

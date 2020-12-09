@@ -2,16 +2,16 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MapComponent} from './map/map.component';
 import {FormsModule} from '@angular/forms';
-import {LocationRoutingModule} from './location-routing.module';
+import {SiteRoutingModule} from './site-routing.module';
 
 
 @NgModule({
   declarations: [MapComponent],
   imports: [
     CommonModule,
-    LocationRoutingModule,
+    SiteRoutingModule,
     FormsModule
   ]
 })
-export class LocationModule {
+export class SiteModule {
 }

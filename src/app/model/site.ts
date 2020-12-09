@@ -1,4 +1,4 @@
-export class Location {
+export class Site {
   name: string;
   x: number;
   y: number;
