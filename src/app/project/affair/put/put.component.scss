@@ -1,0 +1,9 @@
+
+.roster {
+  .person {
+    display: flex;
+    .name, .gender, .id {
+      flex: 1;
+    }
+  }
+}

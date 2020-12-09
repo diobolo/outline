@@ -14,7 +14,9 @@ export class PutComponent implements OnInit {
   impact: string;
   personIds: string;
   pid: string;
-  personList: any[] = [];
+  personList: Person[] = [];
+  startTime: number;
+  endTime: number;
 
   constructor(private client: ClientService,
               private route: ActivatedRoute) {
@@ -46,7 +48,9 @@ export class PutComponent implements OnInit {
       result: this.result,
       impact: this.impact,
       personIds: this.personIds,
-      pid: this.pid
+      pid: this.pid,
+      startTime: this.startTime,
+      endTime: this.endTime
     }).then(res => {
       console.log('添加成功');
     });

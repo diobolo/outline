@@ -1,4 +1,6 @@
 export class Affair {
+  id: string;
+  pid: string;
   name: string;
   content: string;
   persons: Person[] = [];
