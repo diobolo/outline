@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {IdbService} from '../../idb/service/idb.service';
-import {UtilService} from '../../service/util.service';
+import { Injectable } from '@angular/core';
+import { IdbService } from '../../idb/service/idb.service';
+import { UtilService } from '../../service/util.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class ApiService {
     return this.idb.getRow('project', id);
   }
 
-  updateProject(param: { intro: string; name: string; id: string }): Promise<any> {
+  updateProject(param): Promise<any> {
     return this.idb.updateRow('project', param);
   }
 
@@ -80,5 +80,13 @@ export class ApiService {
 
   removeSite(id: string): Promise<any> {
     return this.idb.deleteRow('site', id);
+  }
+
+  updatePerson(param: any): Promise<any> {
+    return this.idb.updateRow('person', param);
+  }
+
+  updateSite(param: any): Promise<any> {
+    return this.idb.updateRow('site', param);
   }
 }

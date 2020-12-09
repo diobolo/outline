@@ -4,6 +4,7 @@
     justify-content: space-between;
     .name, .intro, .buttons {
       flex: 1;
+      text-align: center;
     }
   }
 }

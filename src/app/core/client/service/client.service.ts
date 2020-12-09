@@ -25,7 +25,7 @@ export class ClientService {
     return this.api.getProject(id);
   }
 
-  async updateProject(param: { intro: string; name: string; id: string }): Promise<any> {
+  updateProject(param): Promise<any> {
     return this.api.updateProject(param);
   }
 
@@ -67,5 +67,13 @@ export class ClientService {
 
   removeSite(id: string): Promise<any> {
     return this.api.removeSite(id);
+  }
+
+  updatePerson(param): Promise<any> {
+    return this.api.updatePerson(param);
+  }
+
+  updateSite(param): Promise<any> {
+    return this.api.updateSite(param);
   }
 }

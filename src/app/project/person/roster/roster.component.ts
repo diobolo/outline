@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ClientService} from '../../../core/client/service/client.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClientService } from '../../../core/client/service/client.service';
+import { Person } from '../../../model/person';
 
 @Component({
   selector: 'app-roster',
@@ -23,17 +24,21 @@ export class RosterComponent implements OnInit {
 
   getPersonList(id: string): void {
     this.client.getPersonList(id).then(res => {
-      this.personList = res;
+      this.personList = res.map(p => new Person(p));
     });
   }
 
   delete(p: Person): void {
     const conf = confirm('您确定要删除这个人物吗?');
     if (!conf) {
-      return ;
+      return;
     }
     this.client.removePerson(p.id).then(() => {
       this.getPersonList(this.pid);
     });
+  }
+
+  update(p: Person): void {
+    this.router.navigate(['./put'], { queryParams: { id: p.id }, relativeTo: this.route });
   }
 }

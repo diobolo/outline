@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from '../../model/project';
 import {ClientService} from '../../core/client/service/client.service';
-import {Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -13,7 +13,8 @@ export class ListComponent implements OnInit {
   projectList: Project[];
 
   constructor(private client: ClientService,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -41,7 +42,7 @@ export class ListComponent implements OnInit {
   }
 
   update(p: Project): void {
-    this.router.navigate(['project/put'], {queryParams: {id: p.id}});
+    this.router.navigate(['./put'], {queryParams: {id: p.id}, relativeTo: this.route});
   }
 
   check(p: Project): void {

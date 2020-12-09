@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../../core/client/service/client.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Site } from '../../../model/site';
 
 @Component({
@@ -11,8 +11,10 @@ import { Site } from '../../../model/site';
 export class MapComponent implements OnInit {
   pid: string;
   siteList: Site[] = [];
+
   constructor(private client: ClientService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,5 +38,9 @@ export class MapComponent implements OnInit {
     this.client.removeSite(site.id).then(() => {
       this.getSiteList(this.pid);
     });
+  }
+
+  update(site: Site): void {
+    this.router.navigate(['./put'], { relativeTo: this.route, queryParams: { id: site.id } });
   }
 }

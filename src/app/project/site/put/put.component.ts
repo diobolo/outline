@@ -22,8 +22,9 @@ export class PutComponent implements OnInit {
 
   ngOnInit(): void {
     this.pid = this.route.parent.parent.snapshot.params.id;
-    if (this.route.snapshot.params.id) {
-      this.getSite(this.route.snapshot.params.id);
+    this.id = this.route.snapshot.queryParams.id;
+    if (this.id) {
+      this.getSite(this.id);
     }
   }
 
@@ -40,10 +41,37 @@ export class PutComponent implements OnInit {
     });
   }
 
-  submit(): void {
-    this.client.addSite({ name: this.name, x: this.x, y: this.y, z: this.z, description: this.description, pid: this.pid }).then(res => {
-      console.log(res);
-      history.back();
-    });
+  async submit(): Promise<any> {
+    if (!this.name || !this.description) {
+      console.log('请输入场所信息');
+      return;
+    }
+    if (!this.id) {
+      const res = await this.client.addSite({
+        name: this.name,
+        x: this.x,
+        y: this.y,
+        z: this.z,
+        description: this.description,
+        pid: this.pid
+      });
+      if (res) {
+        history.back();
+      }
+    } else {
+      const res = await this.client.updateSite({
+        id: this.id,
+        name: this.name,
+        x: this.x,
+        y: this.y,
+        z: this.z,
+        description: this.description,
+        pid: this.pid
+      });
+      if (res) {
+        history.back();
+      }
+    }
+
   }
 }

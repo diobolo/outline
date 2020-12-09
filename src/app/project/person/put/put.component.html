@@ -1,12 +1,20 @@
-
 <div>
-  姓名: <input type="text" [(ngModel)]="name">
+  <span>姓名: </span>
+  <label>
+    <input type="text" [(ngModel)]="name">
+  </label>
 </div>
 <div>
-  性别: <input type="text" [(ngModel)]="gender">
+  <span>性别: </span>
+  <label>
+    <input type="text" [(ngModel)]="gender">
+  </label>
 </div>
 <div>
-  生日: <input type="text" [(ngModel)]="birth">
+  <span>生日: </span>
+  <label>
+    <input type="text" [(ngModel)]="birthTime">
+  </label>
 </div>
 <div class="buttons">
   <button class="button" (click)="submit()">提交</button>
