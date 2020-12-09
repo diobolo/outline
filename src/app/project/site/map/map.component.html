@@ -7,6 +7,7 @@
       <span class="site-y">纵轴</span>
       <span class="site-z">高度</span>
       <span class="description">描述</span>
+      <span class="buttons">操作</span>
     </div>
     <div class="site" *ngFor="let site of siteList">
       <div class="name">{{site.name}}</div>
@@ -14,6 +15,9 @@
       <div class="site-y">{{site.y}}</div>
       <div class="site-z">{{site.z || '-'}}</div>
       <div class="description">{{site.description}}</div>
+      <div class="buttons">
+        <button class="button" (click)="delete(site)">删除</button>
+      </div>
     </div>
   </div>
 </div>

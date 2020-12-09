@@ -73,4 +73,12 @@ export class ApiService {
   getSite(sid: string): Promise<any> {
     return this.idb.getRow('site', sid);
   }
+
+  removePerson(id: string): Promise<any> {
+    return this.idb.deleteRow('person', id);
+  }
+
+  removeSite(id: string): Promise<any> {
+    return this.idb.deleteRow('site', id);
+  }
 }

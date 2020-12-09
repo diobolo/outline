@@ -2,7 +2,7 @@
 .list {
   .site, .caption {
     display: flex;
-    .name, .site-x, .site-y, .site-z, .description {
+    .name, .site-x, .site-y, .site-z, .description, .buttons {
       flex: 1;
       text-align: center;
     }

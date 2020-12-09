@@ -1,4 +1,5 @@
 declare interface Affair {
+  id: string;
   name: string;
   content: string;
   result: string;
@@ -9,6 +10,7 @@ declare interface Affair {
 }
 
 declare interface Person {
+  id: string;
   name: string;
   gender: string;
   birthTime: number;
@@ -16,9 +18,12 @@ declare interface Person {
 }
 
 declare interface Site {
+  id: string;
   name: string;
   x: number;
   y: number;
+  z: number;
+  description: string;
 }
 
 declare interface Project {

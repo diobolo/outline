@@ -2,7 +2,7 @@
 .list {
   .person, .caption {
     display: flex;
-    .name, .gender, .birth {
+    .name, .gender, .birth, .buttons {
       flex: 1;
       text-align: center;
     }

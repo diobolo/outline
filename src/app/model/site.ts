@@ -1,4 +1,5 @@
 export class Site {
+  id: string;
   name: string;
   x: number;
   y: number;
@@ -6,9 +7,11 @@ export class Site {
   description: string;
 
   constructor(data) {
+    this.id = data.id;
     this.name = data.name;
     this.x = data.x;
     this.y = data.y;
+    this.z = data.z;
     this.description = data.description;
   }
 }

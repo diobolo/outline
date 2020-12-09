@@ -8,7 +8,8 @@ import {ClientService} from '../../../core/client/service/client.service';
   styleUrls: ['./roster.component.scss']
 })
 export class RosterComponent implements OnInit {
-  personList: any[] = [];
+  pid: string;
+  personList: Person[] = [];
 
   constructor(private client: ClientService,
               private router: Router,
@@ -16,7 +17,8 @@ export class RosterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPersonList(this.route.parent.parent.snapshot.params.id);
+    this.pid = this.route.parent.parent.snapshot.params.id;
+    this.getPersonList(this.pid);
   }
 
   getPersonList(id: string): void {
@@ -25,4 +27,13 @@ export class RosterComponent implements OnInit {
     });
   }
 
+  delete(p: Person): void {
+    const conf = confirm('您确定要删除这个人物吗?');
+    if (!conf) {
+      return ;
+    }
+    this.client.removePerson(p.id).then(() => {
+      this.getPersonList(this.pid);
+    });
+  }
 }

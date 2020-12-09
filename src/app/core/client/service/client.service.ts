@@ -60,4 +60,12 @@ export class ClientService {
   getSite(sid: string): Promise<any> {
     return this.api.getSite(sid);
   }
+
+  removePerson(id: string): Promise<any> {
+    return this.api.removePerson(id);
+  }
+
+  removeSite(id: string): Promise<any> {
+    return this.api.removeSite(id);
+  }
 }
