@@ -58,4 +58,19 @@ export class ApiService {
   getAffairList(pid: string): Promise<any> {
     return this.idb.indexAll('affair', 'pid', pid);
   }
+
+  getSiteList(pid: string): Promise<any> {
+    return this.idb.indexAll('site', 'pid', pid);
+  }
+
+  addSite(params: any): Promise<any> {
+    const id = this.util.randomString();
+    console.log('add site', id);
+    params.id = id;
+    return this.idb.addRow('site', params);
+  }
+
+  getSite(sid: string): Promise<any> {
+    return this.idb.getRow('site', sid);
+  }
 }

@@ -40,7 +40,7 @@ export class PutComponent implements OnInit {
       console.log('请输入事件名称');
       return;
     }
-    this.client.addEvent({
+    this.client.addAffair({
       name: this.name,
       content: this.content,
       result: this.result,

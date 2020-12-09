@@ -1,3 +1,21 @@
 <div class="container">
-  查看地图
+  <button class="button" routerLink="./put">添加场所</button>
+  <div class="list">
+    <div class="caption">
+      <span class="name">名称</span>
+      <span class="site-x">横轴</span>
+      <span class="site-y">纵轴</span>
+      <span class="site-z">高度</span>
+      <span class="description">描述</span>
+    </div>
+    <div class="site" *ngFor="let site of siteList">
+      <div class="name">{{site.name}}</div>
+      <div class="site-x">{{site.x}}</div>
+      <div class="site-y">{{site.y}}</div>
+      <div class="site-z">{{site.z || '-'}}</div>
+      <div class="description">{{site.description}}</div>
+    </div>
+  </div>
 </div>
+
+

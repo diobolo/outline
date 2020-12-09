@@ -69,7 +69,7 @@ export class TimelineComponent implements OnInit, OnDestroy {
     if (!pid) {
       return;
     }
-    return this.client.getEventList(pid).then(res => {
+    return this.client.getAffairList(pid).then(res => {
       this.eventList = res;
     });
   }

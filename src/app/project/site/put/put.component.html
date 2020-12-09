@@ -1,0 +1,25 @@
+<div class="container">
+  <div>
+    <span>名称: </span>
+    <input type="text" [(ngModel)]="name">
+  </div>
+  <div>
+    <span>横轴: </span>
+    <input type="number" [(ngModel)]="x">
+  </div>
+  <div>
+    <span>纵轴: </span>
+    <input type="number" [(ngModel)]="y">
+  </div>
+  <div>
+    <span>高度: </span>
+    <input type="number" [(ngModel)]="z">
+  </div>
+  <div>
+    <span>描述:</span>
+    <textarea placeholder="输入场所描述" [(ngModel)]="description"></textarea>
+  </div>
+  <div class="buttons">
+    <button class="button" (click)="submit()">提交</button>
+  </div>
+</div>

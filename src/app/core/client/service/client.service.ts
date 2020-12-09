@@ -41,11 +41,23 @@ export class ClientService {
     return this.api.getPersonList(pid);
   }
 
-  addEvent(param): Promise<any> {
+  addAffair(param): Promise<any> {
     return this.api.addAffair(param);
   }
 
-  getEventList(pid: string): Promise<any> {
+  getAffairList(pid: string): Promise<any> {
     return this.api.getAffairList(pid);
+  }
+
+  getSiteList(pid: string): Promise<any> {
+    return this.api.getSiteList(pid);
+  }
+
+  addSite(param): Promise<any> {
+    return this.api.addSite(param);
+  }
+
+  getSite(sid: string): Promise<any> {
+    return this.api.getSite(sid);
   }
 }

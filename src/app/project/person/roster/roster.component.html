@@ -4,12 +4,12 @@
 </div>
 
 <div class="list">
-  <div class="item">
+  <div class="caption">
     <span class="name">姓名</span>
     <span class="gender">性别</span>
     <span class="birth">生日</span>
   </div>
-  <div class="item" *ngFor="let p of personList;">
+  <div class="person" *ngFor="let p of personList;">
     <span class="name">{{p.name}}</span>
     <span class="gender">{{p.gender}}</span>
     <span class="birth">{{p.birth}}</span>

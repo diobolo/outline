@@ -1,0 +1,17 @@
+
+.list {
+  .site, .caption {
+    display: flex;
+    .name, .site-x, .site-y, .site-z, .description {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  .caption{
+    font-weight: bold;
+    background-color: #ddd;
+  }
+  .site:nth-child(odd) {
+    background-color: #eee;
+  }
+}
