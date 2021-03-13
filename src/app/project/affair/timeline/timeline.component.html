@@ -1,14 +1,17 @@
 
 <div class="buttons">
   <button class="button" routerLink="./put">添加事件</button>
+<!--  <select [(ngModel)]="scale">-->
+<!--    <option value="1">年</option>-->
+<!--    <option value="2">月</option>-->
+<!--    <option value="3">日</option>-->
+<!--    <option value="4">时</option>-->
+<!--  </select>-->
+  <button (click)="back()">后退</button>
+  <button (click)="forward()">前进</button>
+  <button class="button" (click)="test()">test</button>
 </div>
-<canvas class="timeline" #view
-        (resize)="onResize()"
-        (mousedown)="onMousedown($event)"
-        (mousemove)="onMousemove($event)"
-        (mouseup)="onMouseup($event)"
-        (mousewheel)="onMousewheel($event)">
-</canvas>
+<canvas class="view" #view (click)="onClick($event)"></canvas>
 
 
 <!--<div class="timeline">-->
