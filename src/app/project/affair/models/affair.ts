@@ -19,6 +19,7 @@ export class Affair {
   index: number;  // 发生于第几个时间单位
 
   constructor(data) {
+    this.id = data.id;
     this.name = data.name;
     this.content = data.content;
     this.result = data.result;

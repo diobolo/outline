@@ -10,6 +10,38 @@
   height: 100%;
 }
 
+.affair-pop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  .main {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 500px;
+    background-color: #fff;
+    padding: 15px;
+    > div {
+      padding: 10px;
+      background-color: #eee;
+      margin: 10px 0;
+    }
+    input,textarea {
+      width: 100%;
+      border: none;
+      resize: none;
+      outline: none;
+    }
+    button {
+      cursor: pointer;
+    }
+  }
+}
+
 .buttons {
   position: absolute;
   top: 10px;

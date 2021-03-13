@@ -1,6 +1,6 @@
 
 <div class="buttons">
-  <button class="button" routerLink="./put">添加事件</button>
+<!--  <button class="button" routerLink="./put">添加事件</button>-->
 <!--  <select [(ngModel)]="scale">-->
 <!--    <option value="1">年</option>-->
 <!--    <option value="2">月</option>-->
@@ -12,20 +12,47 @@
 </div>
 <canvas class="view" #view (click)="onClick($event)"></canvas>
 
-
-<!--<div class="timeline">-->
-<!--  <div class="event">-->
-<!--    <div class="name">名称</div>-->
-<!--    <div class="content">内容</div>-->
-<!--    <div class="result">结果</div>-->
-<!--    <div class="impact">影响</div>-->
-<!--    <div class="person">人员</div>-->
-<!--  </div>-->
-<!--  <div class="event" *ngFor="let e of eventList">-->
-<!--    <div class="name">{{e.name}}</div>-->
-<!--    <div class="content">{{e.content}}</div>-->
-<!--    <div class="result">{{e.result}}</div>-->
-<!--    <div class="impact">{{e.impact}}</div>-->
-<!--    <div class="person">{{e.personIds}}</div>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="affair-pop" (click)="dismissAffair()" *ngIf="checkedAffair">
+  <div class="main" (click)="$event.cancelBubble = true">
+    <h3>查看事件</h3>
+    <div>
+      <div>名称：</div>
+      <label>
+        <input type="text" [(ngModel)]="checkedAffair.name">
+      </label>
+    </div>
+    <div>
+      <div>内容：</div>
+      <label>
+        <textarea [(ngModel)]="checkedAffair.content"></textarea>
+      </label>
+    </div>
+    <div>
+      <div>结果：</div>
+      <label>
+        <textarea [(ngModel)]="checkedAffair.result"></textarea>
+      </label>
+    </div>
+    <div>
+      <div>影响：</div>
+      <label>
+        <textarea [(ngModel)]="checkedAffair.impact"></textarea>
+      </label>
+    </div>
+    <div>
+      <div>开始时间：</div>
+      <label>
+        <input type="text" [(ngModel)]="checkedAffair.startTime">
+      </label>
+    </div>
+    <div>
+      <div>结束时间：</div>
+      <label>
+        <input type="text" [(ngModel)]="checkedAffair.endTime">
+      </label>
+    </div>
+    <div>
+      <button class="button" (click)="saveAffair()">提交</button>
+    </div>
+  </div>
+</div>

@@ -26,6 +26,8 @@ export class TimelineComponent implements OnInit, OnDestroy {
   affairHeight = 14;  // 每个事件在视图上显示的高度
   focus = 0; // 当前聚焦于哪个时间点，默认聚焦于故事开始时间
 
+  checkedAffair: Affair;
+
   constructor(private route: ActivatedRoute,
               private client: ClientService) {
     this.pid = route.parent.parent.snapshot.params.id;
@@ -111,7 +113,7 @@ export class TimelineComponent implements OnInit, OnDestroy {
       affair.x = x;
       affair.y = y;
       const width = Math.max(endTime - startTime, 3600) / 86400 * this.step;
-      affair.width = width;
+      affair.width = Math.max(width, 14 * 4);
       affair.height = this.affairHeight;
       this.ctx.fillRect(x, y, width, this.affairHeight);
       this.ctx.fillStyle = 'white';
@@ -150,20 +152,47 @@ export class TimelineComponent implements OnInit, OnDestroy {
   onClick(event): void {
     const x = event.offsetX;
     const y = event.offsetY;
-    this.affairList.forEach(a => {
-      const top = a.y;
-      const left = a.x;
-      const right = a.x + a.width;
-      const bottom = a.y + a.height;
+    for (const affair of this.affairList) {
+      const top = affair.y;
+      const left = affair.x;
+      const right = affair.x + affair.width;
+      const bottom = affair.y + affair.height;
       const result = x > left && x < right && y > top && y < bottom;
       if (result) {
-        this.openAffair(a);
+        this.openAffair(affair);
+        return;
       }
-    });
+    }
+    const startTime = Math.round(x / this.step * 24 * 60 * 60);
+    this.checkedAffair = new Affair({startTime});
   }
 
   openAffair(affair): void {
-    console.log(affair);
+    // console.log(affair);
+    this.checkedAffair = affair;
   }
 
+  dismissAffair(): void {
+    this.checkedAffair = null;
+  }
+
+  saveAffair(): void {
+    // console.log(this.checkedAffair.id);
+    if (this.checkedAffair.id) {
+      //
+    } else {
+      this.client.addAffair({
+        name: this.checkedAffair.name,
+        content: this.checkedAffair.content,
+        result: this.checkedAffair.result,
+        impact: this.checkedAffair.impact,
+        pid: this.pid,
+        startTime: this.checkedAffair.startTime,
+        endTime: this.checkedAffair.endTime
+      }).then(_ => {
+        console.log('添加成功');
+      });
+    }
+
+  }
 }
