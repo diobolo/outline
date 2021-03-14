@@ -15,14 +15,13 @@ import {Affair} from '../models/affair';
 export class TimelineComponent implements OnInit, OnDestroy {
   @ViewChild('view', {static: true}) view: ElementRef;
   @ViewChild('affairPop', {static: false}) affairPop: ElementRef;
-  // timeline: HTMLDivElement = document.querySelector('.timeline');
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   affairList: Affair[] = [];
   subject: Subject<any> = new Subject<any>(); // window resize
   pid: string;
   long = 50; // 当前时间轴的长度，long * scale = 当前浏览的时间跨度
-  scale = 4;  // 1：年 2：月 3：日 4：时
+  scale = '4';  // 1：年 2：月 3：日 4：时
   step = 80; // 每个时间单位在视图上显示的长度，单位px
   affairHeight = 14;  // 每个事件在视图上显示的高度
   focus = 0; // 当前聚焦于哪个时间点，默认聚焦于故事开始时间
@@ -70,8 +69,6 @@ export class TimelineComponent implements OnInit, OnDestroy {
   }
 
   createImage(): void {
-    // const width = this.canvas.width;
-    // const height = this.canvas.height;
     const width = this.long * this.step;
     const height = this.view.nativeElement.height;
     this.canvas.style.width = width + 'px';
@@ -86,7 +83,6 @@ export class TimelineComponent implements OnInit, OnDestroy {
     this.ctx.moveTo(0, height * 0.55);
     this.ctx.lineTo(width, height * 0.55);
     this.ctx.closePath();
-    // this.ctx.arc(0, height * 0.55, 5, 0, Math.PI * 2);
     this.ctx.stroke();
     this.drawDate();
     this.drawAffairs();
@@ -97,23 +93,56 @@ export class TimelineComponent implements OnInit, OnDestroy {
     this.ctx.font = 'normal 14px 黑体';
     this.ctx.textBaseline = 'top';
     for (let i = 0; i < this.long; i++) {
-      this.ctx.fillText(String(i), i * this.step, this.canvas.height * 0.58);
+      let text = '';
+      switch (this.scale) {
+        case '1':
+          text = String(i);
+          break;
+        case '2':
+          text = String(i % 12);
+          break;
+        case '3':
+          text = String(i % 30);
+          break;
+        case '4':
+          text = String(i % 24);
+          break;
+      }
+
+      this.ctx.fillText(text, i * this.step, this.canvas.height * 0.58);
     }
   }
 
   drawAffairs(): void {
     const attachedList = [];
+    let ratio: number;
+    switch (this.scale) {
+      case '1':
+        ratio = 11352960000;
+        break;
+      case '2':
+        ratio = 31104000;
+        break;
+      case '3':
+        ratio = 2592000;
+        break;
+      case '4':
+        ratio = 86400;
+        break;
+      default:
+        ratio = 86400;
+    }
     for (const affair of this.affairList) {
       this.ctx.fillStyle = 'green';
       const startTime = Number(affair.startTime);
       const endTime = Number(affair.endTime);
-      const index = Math.floor(startTime / 86400);
+      const index = Math.floor(startTime / ratio);
       attachedList[index] = attachedList[index] + 1 || 1;
-      const x = startTime / 86400 * this.step;
+      const x = startTime / ratio * this.step;
       const y = this.canvas.height * 0.55 - attachedList[index] * (this.affairHeight + 5);
       affair.x = x;
       affair.y = y;
-      const width = Math.max(endTime - startTime, 3600) / 86400 * this.step;
+      const width = Math.max(endTime - startTime, 3600) / ratio * this.step;
       affair.width = Math.max(width, 14 * 4);
       affair.height = this.affairHeight;
       this.ctx.fillRect(x, y, width, this.affairHeight);
@@ -231,5 +260,10 @@ export class TimelineComponent implements OnInit, OnDestroy {
       this.dismissAffair();
     }
     event.target.flag = false;
+  }
+
+  changeScale(): void {
+    this.createImage();
+    this.install();
   }
 }

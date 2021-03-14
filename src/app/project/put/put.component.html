@@ -1,12 +1,12 @@
 
-<div>
+<div class="row">
   <span>名称:</span>
   <input type="text" [(ngModel)]="name" placeholder="输入项目名称">
 </div>
-<div>
+<div class="row">
   <span>简介:</span>
-  <input type="text" [(ngModel)]="intro" placeholder="输入项目简介">
+  <textarea [(ngModel)]="intro"></textarea>
 </div>
-<div class="buttons">
+<div class="row buttons">
   <button class="button" (click)="submit()">提交</button>
 </div>

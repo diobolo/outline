@@ -1,11 +1,12 @@
 <div class="buttons">
-  <!--  <button class="button" routerLink="./put">添加事件</button>-->
-  <!--  <select [(ngModel)]="scale">-->
-  <!--    <option value="1">年</option>-->
-  <!--    <option value="2">月</option>-->
-  <!--    <option value="3">日</option>-->
-  <!--    <option value="4">时</option>-->
-  <!--  </select>-->
+  <label>
+    <select [(ngModel)]="scale" (change)="changeScale()">
+      <option value="1">年</option>
+      <option value="2">月</option>
+      <option value="3">日</option>
+      <option value="4">时</option>
+    </select>
+  </label>
   <button (click)="back()">后退</button>
   <button (click)="forward()">前进</button>
 </div>

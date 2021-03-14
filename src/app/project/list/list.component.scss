@@ -1,10 +1,28 @@
-.list {
-  .item {
-    display: flex;
-    justify-content: space-between;
-    .name, .intro, .buttons {
-      flex: 1;
+
+:host {
+  padding: 15px;
+  display: block;
+  height: 100%;
+  .list {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    margin-top: 15px;
+    .caption {
+      font-weight: bold;
       text-align: center;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      .name, .intro, .buttons {
+        flex: 1;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 5px;
+      }
+      .buttons button {
+        margin: 0 5px;
+      }
     }
   }
 }
