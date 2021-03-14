@@ -195,4 +195,10 @@ export class TimelineComponent implements OnInit, OnDestroy {
     }
 
   }
+
+  removeAffair(): void {
+    this.client.deleteAffair(this.checkedAffair.id).then(() => {
+      console.log(this.checkedAffair);
+    });
+  }
 }

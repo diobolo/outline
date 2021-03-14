@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { IdbService } from '../../idb/service/idb.service';
-import { UtilService } from '../../service/util.service';
+import {Injectable} from '@angular/core';
+import {IdbService} from '../../idb/service/idb.service';
+import {UtilService} from '../../service/util.service';
 
 @Injectable({
   providedIn: 'root'
@@ -88,5 +88,9 @@ export class ApiService {
 
   updateSite(param: any): Promise<any> {
     return this.idb.updateRow('site', param);
+  }
+
+  removeAffair(id): Promise<any> {
+    return this.idb.deleteRow('affair', id);
   }
 }

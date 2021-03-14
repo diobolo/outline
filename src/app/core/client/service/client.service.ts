@@ -76,4 +76,8 @@ export class ClientService {
   updateSite(param): Promise<any> {
     return this.api.updateSite(param);
   }
+
+  deleteAffair(id: string): Promise<any> {
+    return this.api.removeAffair(id);
+  }
 }
