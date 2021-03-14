@@ -14,6 +14,7 @@ import {Affair} from '../models/affair';
 })
 export class TimelineComponent implements OnInit, OnDestroy {
   @ViewChild('view', {static: true}) view: ElementRef;
+  @ViewChild('affairPop', {static: false}) affairPop: ElementRef;
   // timeline: HTMLDivElement = document.querySelector('.timeline');
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
@@ -168,7 +169,6 @@ export class TimelineComponent implements OnInit, OnDestroy {
   }
 
   openAffair(affair): void {
-    // console.log(affair);
     this.checkedAffair = affair;
   }
 
@@ -177,9 +177,22 @@ export class TimelineComponent implements OnInit, OnDestroy {
   }
 
   saveAffair(): void {
-    // console.log(this.checkedAffair.id);
     if (this.checkedAffair.id) {
-      //
+      this.client.updateAffair({
+        id: this.checkedAffair.id,
+        pid: this.checkedAffair.pid,
+        name: this.checkedAffair.name,
+        content: this.checkedAffair.content,
+        result: this.checkedAffair.result,
+        impact: this.checkedAffair.impact,
+        startTime: this.checkedAffair.startTime,
+        endTime: this.checkedAffair.endTime
+      }).then(() => {
+        console.log('修改成功');
+        this.dismissAffair();
+        this.createImage();
+        this.install();
+      });
     } else {
       this.client.addAffair({
         name: this.checkedAffair.name,
@@ -191,6 +204,9 @@ export class TimelineComponent implements OnInit, OnDestroy {
         endTime: this.checkedAffair.endTime
       }).then(_ => {
         console.log('添加成功');
+        this.dismissAffair();
+        this.createImage();
+        this.install();
       });
     }
 
@@ -200,5 +216,16 @@ export class TimelineComponent implements OnInit, OnDestroy {
     this.client.deleteAffair(this.checkedAffair.id).then(() => {
       console.log(this.checkedAffair);
     });
+  }
+
+  onMousedown(event): void {
+    event.target.flag = true;
+  }
+
+  onMouseup(event): void {
+    if (event.target.flag) {
+      this.dismissAffair();
+    }
+    event.target.flag = false;
   }
 }

@@ -80,4 +80,8 @@ export class ClientService {
   deleteAffair(id: string): Promise<any> {
     return this.api.removeAffair(id);
   }
+
+  updateAffair(param): Promise<any> {
+    return this.api.updateAffair(param);
+  }
 }

@@ -1,19 +1,18 @@
-
 <div class="buttons">
-<!--  <button class="button" routerLink="./put">添加事件</button>-->
-<!--  <select [(ngModel)]="scale">-->
-<!--    <option value="1">年</option>-->
-<!--    <option value="2">月</option>-->
-<!--    <option value="3">日</option>-->
-<!--    <option value="4">时</option>-->
-<!--  </select>-->
+  <!--  <button class="button" routerLink="./put">添加事件</button>-->
+  <!--  <select [(ngModel)]="scale">-->
+  <!--    <option value="1">年</option>-->
+  <!--    <option value="2">月</option>-->
+  <!--    <option value="3">日</option>-->
+  <!--    <option value="4">时</option>-->
+  <!--  </select>-->
   <button (click)="back()">后退</button>
   <button (click)="forward()">前进</button>
 </div>
 <canvas class="view" #view (click)="onClick($event)"></canvas>
 
-<div class="affair-pop" (click)="dismissAffair()" *ngIf="checkedAffair">
-  <div class="main" (click)="$event.cancelBubble = true">
+<div class="affair-pop" (mousedown)="onMousedown($event)" (mouseup)="onMouseup($event)" *ngIf="checkedAffair">
+  <div class="main" (mousedown)="$event.cancelBubble = true">
     <h3>查看事件</h3>
     <div>
       <div>名称：</div>

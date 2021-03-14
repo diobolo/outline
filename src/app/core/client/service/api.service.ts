@@ -93,4 +93,8 @@ export class ApiService {
   removeAffair(id): Promise<any> {
     return this.idb.deleteRow('affair', id);
   }
+
+  updateAffair(param): Promise<any> {
+    return this.idb.updateRow('affair', param);
+  }
 }

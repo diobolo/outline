@@ -20,6 +20,7 @@ export class Affair {
 
   constructor(data) {
     this.id = data.id;
+    this.pid = data.pid;
     this.name = data.name;
     this.content = data.content;
     this.result = data.result;
