@@ -34,9 +34,7 @@ export class ApiService {
   }
 
   addPerson(params: AddPerson): Promise<any> {
-    const id = this.util.randomString();
-    console.log('add person', id);
-    params.id = id;
+    params.id = this.util.randomString();
     return this.idb.addRow('person', params);
   }
 
@@ -49,9 +47,7 @@ export class ApiService {
   }
 
   addAffair(params: any): Promise<any> {
-    const id = this.util.randomString();
-    console.log('add affair', id);
-    params.id = id;
+    params.id = this.util.randomString();
     return this.idb.addRow('affair', params);
   }
 
@@ -64,9 +60,7 @@ export class ApiService {
   }
 
   addSite(params: any): Promise<any> {
-    const id = this.util.randomString();
-    console.log('add site', id);
-    params.id = id;
+    params.id = this.util.randomString();
     return this.idb.addRow('site', params);
   }
 

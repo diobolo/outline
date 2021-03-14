@@ -19,7 +19,7 @@ export class IdbService {
               if (ctx.db) {
                 return Reflect.apply(target, ctx, args);
               }
-              return ctx.create().then(res => {
+              return ctx.create().then(() => {
                 return Reflect.apply(target, ctx, args);
               });
             }
@@ -44,14 +44,12 @@ export class IdbService {
           }
         }
       });
-      request.addEventListener('success', (event) => {
-        // console.log('on success', event);
+      request.addEventListener('success', () => {
         this.db = request.result;
         resolve(true);
       });
 
       function fail(err): void {
-        alert('本地数据库打开失败, 请联系开发人员');
         console.log('idb open fail', err);
         resolve();
       }
@@ -65,8 +63,7 @@ export class IdbService {
     return new Promise(resolve => {
       const store = this.db.transaction([name], 'readwrite').objectStore(name);
       const request = store.add(row);
-      request.addEventListener('success', (e) => {
-        console.log(e);
+      request.addEventListener('success', () => {
         resolve(row);
       });
       request.addEventListener('error', () => {
@@ -127,8 +124,6 @@ export class IdbService {
   indexAll(name: string, index: string, value: string): Promise<any> {
     return new Promise((resolve) => {
       const store = this.db.transaction([name], 'readwrite').objectStore(name);
-      console.log(name, index, value)
-
       const idbIndex = store.index(index);
       const request = idbIndex.getAll(value);
       request.addEventListener('success', (event: any) => {

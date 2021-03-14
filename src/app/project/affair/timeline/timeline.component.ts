@@ -202,8 +202,9 @@ export class TimelineComponent implements OnInit, OnDestroy {
         pid: this.pid,
         startTime: this.checkedAffair.startTime,
         endTime: this.checkedAffair.endTime
-      }).then(_ => {
+      }).then(res => {
         console.log('添加成功');
+        this.affairList.push(new Affair(res));
         this.dismissAffair();
         this.createImage();
         this.install();
@@ -214,7 +215,10 @@ export class TimelineComponent implements OnInit, OnDestroy {
 
   removeAffair(): void {
     this.client.deleteAffair(this.checkedAffair.id).then(() => {
-      console.log(this.checkedAffair);
+      this.affairList = this.affairList.filter(a => a.id !== this.checkedAffair.id);
+      this.dismissAffair();
+      this.createImage();
+      this.install();
     });
   }
 
